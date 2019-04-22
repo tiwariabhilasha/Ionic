@@ -1,3 +1,24 @@
-<p>
-  target-lists works!
-</p>
+
+<div class="container-fluid">
+  <div class="col-md-4 float-left"> 
+  <div class="listoftargets" data-simplebar>
+    <div *ngFor="let target of targetList?.targets" 
+    class="card text-white row" [ngClass]="{'bg-success': target.status == 'approved', 'bg-warning': target.status == 'pending',
+    'bg-danger': target.status == 'declined','bg-info': target.status == 'researching'}" (click)="getDetails(target.id)"
+    [class.selected]="target.id == selectedCard"> 
+        <div class="card-body">
+          <p class="comName">{{target.companyInfo.companyName}}</p>
+          <div>
+            <span class="col-md-4">performance: {{target.performance}}</span>
+            <span class="col-md-4 float-right">{{target.status | uppercase}}</span>
+          </div>
+        </div>
+  </div>
+  
+  
+</div>
+</div>
+<div class="col-md-8 float-left">
+  <app-target-details [details]="details" [selectedCard]="selectedCard"></app-target-details>
+</div>
+</div>

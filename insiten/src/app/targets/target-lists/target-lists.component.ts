@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Targets } from '../../targets';
+import { TargetsService } from '../../targets.service';
+import {Router} from '@angular/router';
+import 'simplebar';
+
 
 @Component({
   selector: 'app-target-lists',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TargetListsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private targetService: TargetsService, private router: Router) { }
+
+  public targetList: Targets[];
+  public details: Targets[];
+  private selectedCard: Number = 1;
 
   ngOnInit() {
+    this.targetService.getTargetList().subscribe(res => {
+      this.targetList = res;
+      this.details = res;
+    })
+  }
+
+  getDetails(id: Number){
+    this.selectedCard = id;
   }
 
 }

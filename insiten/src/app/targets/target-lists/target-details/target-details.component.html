@@ -1,3 +1,33 @@
-<p>
-  target-details works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="btn-group">
+            <button value="Edit" class="btn btn-primary" [disabled]="!targetForm.valid" (click)="onSubmit(targetForm.controls)">Save</button>
+            <button value="Delete" class="btn btn-secondary">Delete</button>
+        </div>
+    </div>
+    <hr />
+
+    <form [formGroup]="targetForm" (ngSubmit)="onSubmit(myForm)">
+        <label>
+            Company name
+            <input type="text" formControlName="companyName">
+        </label>
+        <label>
+            Description
+            <input type="text" formControlName="description">
+        </label>
+        <label>
+            Status
+            <input type="text" formControlName="status">
+        </label>
+        <label>
+            Key Contacts 
+            <input type="text" formControlName="contacts">
+        </label>
+        <label>
+                Performance
+                <input type="text" formControlName="performance">
+            </label>
+    </form>
+
+</div>

@@ -1,0 +1,14 @@
+.card {
+    margin: 14px 0 14px 0;
+}
+.listoftargets {
+    max-height: 45em;
+    overflow-y: scroll;
+}
+.comName {
+    font-weight: bold;
+}
+.selected {
+    border: 5px solid lightskyblue;
+    border-right: none;
+}
