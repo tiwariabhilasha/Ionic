@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Targets } from '../../../targets';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -11,13 +11,20 @@ export class TargetDetailsComponent implements OnInit, OnChanges {
 
   @Input() details;
   @Input() selectedCard;
+  @Output() updateList: EventEmitter<any> = new EventEmitter();
   selectCard;
   detail;
   public selectedTarget: Targets;
   constructor() { }
+  statuses: Array<object>
 
   ngOnInit() {
-    console.log("testing")
+    this.statuses = [{
+      id: "pending", name: "pending"},
+      {id: "approved", name: "Approved"},
+      {id: "declined", name: "declined"},
+      {id: "researching", name: "researching"},
+    ]
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -54,10 +61,20 @@ export class TargetDetailsComponent implements OnInit, OnChanges {
   
 
   onSubmit(value){
+    this.selectedTarget[0].companyInfo = {
+      "companyName": value.companyName.value,
+      "description": value.companyName.value
+    }
+    this.selectedTarget[0].keyContacts = value.contacts.value;
+    this.selectedTarget[0].performance = value.performance.value;
+    this.selectedTarget[0].status = value.status.value;
+    
     
   }
 
-
-
+  delete(){
+    
+    this.updateList.emit(this.details);
+  }
 
 }

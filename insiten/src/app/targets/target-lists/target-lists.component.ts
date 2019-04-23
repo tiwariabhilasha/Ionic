@@ -29,4 +29,8 @@ export class TargetListsComponent implements OnInit {
     this.selectedCard = id;
   }
 
+  updateList(updatedTarget: Targets){
+    console.log("successfully reached here");
+  }
+
 }

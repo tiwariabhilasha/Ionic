@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
-        <div class="btn-group">
+        <div class="btn-group control-buttons">
             <button value="Edit" class="btn btn-primary" [disabled]="!targetForm.valid" (click)="onSubmit(targetForm.controls)">Save</button>
-            <button value="Delete" class="btn btn-secondary">Delete</button>
+            <button value="Delete" class="btn btn-secondary" (click)="delete()">Delete</button>
         </div>
     </div>
     <hr />
@@ -18,7 +18,11 @@
         </label>
         <label>
             Status
-            <input type="text" formControlName="status">
+            <select formControlName="status">
+                    <option *ngFor="let stat of statuses" value= {{stat.id}} [selected]="stat.selected == status">
+                      {{stat.name | uppercase}}
+                    </option>
+                  </select>
         </label>
         <label>
             Key Contacts 
