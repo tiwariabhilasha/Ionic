@@ -14,8 +14,8 @@ export class TargetListsComponent implements OnInit {
 
   constructor(private targetService: TargetsService, private router: Router) { }
 
-  public targetList: Targets[];
-  public details: Targets[];
+  public targetList: Targets;
+  public details: Targets;
   private selectedCard: Number = 1;
 
   ngOnInit() {
@@ -30,7 +30,12 @@ export class TargetListsComponent implements OnInit {
   }
 
   updateList(updatedTarget: Targets){
-    console.log("successfully reached here");
+    this.targetList.targets.unshift(updatedTarget);
+    this.selectedCard = updatedTarget.id;
+  }
+
+  updateId(updateId: number){
+    this.selectedCard = updateId;
   }
 
 }

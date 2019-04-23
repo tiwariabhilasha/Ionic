@@ -23,8 +23,8 @@ export class TargetsService {
 
   
 
-  public getTargetList(): Observable<Targets[]>{
+  public getTargetList(): Observable<Targets>{
     this._url = '../assets/data/mock-targets.json';
-    return this.http.get<Targets[]>(this._url);
+    return this.http.get<Targets>(this._url);
   }
 }

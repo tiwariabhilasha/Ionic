@@ -4,3 +4,9 @@ label,input {
 .control-buttons {
     margin: 10px 0 10px 0;
 }
+.btn{
+    margin-right:5px;
+}
+input:invalid {
+    border: 2px solid red;
+  }
