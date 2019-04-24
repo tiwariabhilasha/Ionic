@@ -7,6 +7,6 @@ label,input {
 .btn{
     margin-right:5px;
 }
-input:invalid {
+input:invalid, textarea:invalid {
     border: 2px solid red;
   }
